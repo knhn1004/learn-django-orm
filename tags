@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
+ALLOWED_HOSTS	core/settings.py	/^ALLOWED_HOSTS = []$/;"	v
+AUTH_PASSWORD_VALIDATORS	core/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+BASE_DIR	core/settings.py	/^BASE_DIR = Path(__file__).resolve().parent.parent$/;"	v
+DATABASES	core/settings.py	/^DATABASES = {$/;"	v
+DEBUG	core/settings.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	core/settings.py	/^INSTALLED_APPS = [$/;"	v
+LANGUAGE_CODE	core/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+MIDDLEWARE	core/settings.py	/^MIDDLEWARE = [$/;"	v
+Migration	student/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+ROOT_URLCONF	core/settings.py	/^ROOT_URLCONF = 'core.urls'$/;"	v
+SECRET_KEY	core/settings.py	/^SECRET_KEY = 'i+)6unlqroe2w)1w1@xhvt*^$@3!bx_qpn&)sbnyd7f5iy8#9u'$/;"	v
+STATIC_URL	core/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+Student	student/models.py	/^class Student(models.Model):$/;"	c
+StudentsConfig	student/apps.py	/^class StudentsConfig(AppConfig):$/;"	c
+TEMPLATES	core/settings.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	core/settings.py	/^TIME_ZONE = 'Asia\/Taipei'$/;"	v
+Teacher	student/models.py	/^class Teacher(models.Model):$/;"	c
+USE_I18N	core/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	core/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	core/settings.py	/^USE_TZ = True$/;"	v
+WSGI_APPLICATION	core/settings.py	/^WSGI_APPLICATION = 'core.wsgi.application'$/;"	v
+__str__	student/models.py	/^    def __str__(self):$/;"	m	class:Student
+__str__	student/models.py	/^    def __str__(self):$/;"	m	class:Teacher
+age	student/models.py	/^    age = models.IntegerField()$/;"	v	class:Student
+app_name	student/urls.py	/^app_name = 'student'$/;"	v
+application	core/asgi.py	/^application = get_asgi_application()$/;"	v
+application	core/wsgi.py	/^application = get_wsgi_application()$/;"	v
+classroom	student/models.py	/^    classroom = models.IntegerField()$/;"	v	class:Student
+dependencies	student/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+firstname	student/models.py	/^    firstname = models.CharField(max_length=100)$/;"	v	class:Student
+firstname	student/models.py	/^    firstname = models.CharField(max_length=100)$/;"	v	class:Teacher
+initial	student/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+main	manage.py	/^def main():$/;"	f
+name	student/apps.py	/^    name = 'student'$/;"	v	class:StudentsConfig
+operations	student/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+python.linting.enabled	.vim/coc-settings.json	/^  "python.linting.enabled": true$/;"	b
+python.linting.pep8Enabled	.vim/coc-settings.json	/^  "python.linting.pep8Enabled": true,$/;"	b
+python.linting.pylintEnabled	.vim/coc-settings.json	/^  "python.linting.pylintEnabled": false,$/;"	b
+student_list	student/views.py	/^def student_list(request):$/;"	f
+surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v	class:Student
+surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v	class:Teacher
+teacher	student/models.py	/^    teacher = models.CharField(max_length=100)$/;"	v	class:Student
+urlpatterns	core/urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	student/urls.py	/^urlpatterns = [$/;"	v

@@ -51,19 +51,48 @@ from django.db.models import Q
 # Perform an UNION query
 #################################################################
 
-def student_list(request):
-    # union removes any 'duplicated' rows
-    # union can only be used on the columns with same name
-    # in this case: 'firstname'
-    #  posts = Student.objects.all().values_list('firstname').union(
-    #  Teacher.objects.all().values_list('firstname'))
+#  def student_list(request):
+#  # union removes any 'duplicated' rows
+#  # union can only be used on the columns with same name
+#  # in this case: 'firstname'
+#  #  posts = Student.objects.all().values_list('firstname').union(
+#  #  Teacher.objects.all().values_list('firstname'))
+#
+#  #  .values_list() returns a Queryset with an array of objects
+#  #  .values() returns a Queryset with dictionary
+#  posts = Student.objects.all().values('firstname').union(
+#  Teacher.objects.all().values('firstname'))
+#
+#  print(posts)
+#  print(posts.query)
+#
+#  return render(request, 'output.html', {'posts': posts})
 
-    #  .values_list() returns an array of objects
-    #  .values() returns a dictionary
-    posts = Student.objects.all().values('firstname').union(
-        Teacher.objects.all().values('firstname'))
+# Perform a NOT query
+#################################################################
+
+#  def student_list(request):
+#  #  posts = Student.objects.exclude(age=20) & Student.objects.exclude(
+#  #  firstname__startswith='raquel')
+#
+#  posts = Student.objects.exclude(age__gt=20)
+#
+#  print(posts)
+#  print(posts.query)
+#  print(connection.queries)
+#
+#  return render(request, 'output.html', {'posts': posts})
+
+def student_list(request):
+    #  posts = Student.objects.exclude(age=20) & Student.objects.exclude(
+    #  firstname__startswith='raquel')
+
+    #  '~Q' means NOT
+    posts = Student.objects.filter(
+        ~Q(age__gt=20) & ~Q(surname__startswith='baldwin'))
 
     print(posts)
     print(posts.query)
+    print(connection.queries)
 
     return render(request, 'output.html', {'posts': posts})
