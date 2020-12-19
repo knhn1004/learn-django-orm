@@ -9,12 +9,25 @@
 ALLOWED_HOSTS	core/settings.py	/^ALLOWED_HOSTS = []$/;"	v
 AUTH_PASSWORD_VALIDATORS	core/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
 BASE_DIR	core/settings.py	/^BASE_DIR = Path(__file__).resolve().parent.parent$/;"	v
+BaseItem	orm/models.py	/^class BaseItem(models.Model):$/;"	c
+Books	orm/models.py	/^class Books(models.Model):$/;"	c
 DATABASES	core/settings.py	/^DATABASES = {$/;"	v
 DEBUG	core/settings.py	/^DEBUG = True$/;"	v
 INSTALLED_APPS	core/settings.py	/^INSTALLED_APPS = [$/;"	v
+ISBN	orm/models.py	/^    ISBN = models.TextField()$/;"	v	class:ISBN
+ISBN	orm/models.py	/^class ISBN(Books):$/;"	c
+ItemA	orm/models.py	/^class ItemA(BaseItem):$/;"	c
+ItemB	orm/models.py	/^class ItemB(BaseItem):$/;"	c
+ItemC	orm/models.py	/^class ItemC(BaseItem):$/;"	c
+ItemD	orm/models.py	/^class ItemD(BaseItem):$/;"	c
 LANGUAGE_CODE	core/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
 MIDDLEWARE	core/settings.py	/^MIDDLEWARE = [$/;"	v
+Meta	orm/models.py	/^    class Meta(BaseItem.Meta):$/;"	c	class:ItemA
+Meta	orm/models.py	/^    class Meta:$/;"	c	class:BaseItem
+Migration	orm/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	orm/migrations/0002_books_isbn.py	/^class Migration(migrations.Migration):$/;"	c
 Migration	student/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+OrmConfig	orm/apps.py	/^class OrmConfig(AppConfig):$/;"	c
 Output	student/templates/output.html	/^  <h1>Output<\/h1>$/;"	h
 ROOT_URLCONF	core/settings.py	/^ROOT_URLCONF = 'core.urls'$/;"	v
 SECRET_KEY	core/settings.py	/^SECRET_KEY = 'i+)6unlqroe2w)1w1@xhvt*^$@3!bx_qpn&)sbnyd7f5iy8#9u'$/;"	v
@@ -30,26 +43,45 @@ USE_TZ	core/settings.py	/^USE_TZ = True$/;"	v
 WSGI_APPLICATION	core/settings.py	/^WSGI_APPLICATION = 'core.wsgi.application'$/;"	v
 __str__	student/models.py	/^    def __str__(self):$/;"	m	class:Student
 __str__	student/models.py	/^    def __str__(self):$/;"	m	class:Teacher
+abstract	orm/models.py	/^        abstract = True$/;"	v	class:BaseItem.Meta
 age	student/models.py	/^    age = models.IntegerField()$/;"	v	class:Student
 app_name	student/urls.py	/^app_name = 'student'$/;"	v
 application	core/asgi.py	/^application = get_asgi_application()$/;"	v
 application	core/wsgi.py	/^application = get_wsgi_application()$/;"	v
+books_ptr	orm/models.py	/^    books_ptr = models.OneToOneField($/;"	v	class:ISBN
 classroom	student/models.py	/^    classroom = models.IntegerField()$/;"	v	class:Student
+content	orm/models.py	/^    content = models.TextField()$/;"	v	class:ItemA
+created	orm/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:BaseItem
+created	orm/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:Books
+dependencies	orm/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	orm/migrations/0002_books_isbn.py	/^    dependencies = [$/;"	v	class:Migration
 dependencies	student/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
 dictfetchall	student/views.py	/^def dictfetchall(cursor):$/;"	f
+file	orm/models.py	/^    file = models.FileField(upload_to="files")$/;"	v	class:ItemB
+file	orm/models.py	/^    file = models.FileField(upload_to="images")$/;"	v	class:ItemC
 firstname	student/models.py	/^    firstname = models.CharField(max_length=100)$/;"	v	class:Student
 firstname	student/models.py	/^    firstname = models.CharField(max_length=100)$/;"	v	class:Teacher
+initial	orm/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 initial	student/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 main	manage.py	/^def main():$/;"	f
+name	orm/apps.py	/^    name = 'orm'$/;"	v	class:OrmConfig
 name	student/apps.py	/^    name = 'student'$/;"	v	class:StudentsConfig
+operations	orm/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+operations	orm/migrations/0002_books_isbn.py	/^    operations = [$/;"	v	class:Migration
 operations	student/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+ordering	orm/models.py	/^        ordering = ['-created']$/;"	v	class:ItemA.Meta
+ordering	orm/models.py	/^        ordering = ['title']$/;"	v	class:BaseItem.Meta
 python.linting.enabled	.vim/coc-settings.json	/^  "python.linting.enabled": true$/;"	b
 python.linting.pep8Enabled	.vim/coc-settings.json	/^  "python.linting.pep8Enabled": true,$/;"	b
 python.linting.pylintEnabled	.vim/coc-settings.json	/^  "python.linting.pylintEnabled": false,$/;"	b
+slug	orm/models.py	/^    slug = models.SlugField(max_length=255, unique=True)$/;"	v	class:ItemD
 student_list	student/views.py	/^def student_list(request):$/;"	f
 surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v	class:Student
 surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v	class:Teacher
 teacher	student/models.py	/^    teacher = models.CharField(max_length=100)$/;"	v	class:Student
+title	orm/models.py	/^    title = models.CharField(max_length=100)$/;"	v	class:Books
+title	orm/models.py	/^    title = models.CharField(max_length=255)$/;"	v	class:BaseItem
+updated	orm/models.py	/^    updated = models.DateTimeField(auto_now=True)$/;"	v	class:BaseItem
 urlpatterns	core/urls.py	/^urlpatterns = [$/;"	v
 urlpatterns	student/urls.py	/^urlpatterns = [$/;"	v
 {{ students }}	student/templates/output.html	/^  <h2>{{ students }}<\/h2>$/;"	i
