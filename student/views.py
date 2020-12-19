@@ -8,45 +8,45 @@ from django.db.models import Q
 
 
 #  def student_list(request):
-#  posts = Student.objects.all()
+#  students = Student.objects.all()
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #  print(connection.queries)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 #  def student_list(request):
 #  #  using Q objects
-#  posts = Student.objects.filter(
+#  students = Student.objects.filter(
 #  Q(surname__startswith='austin') | ~Q(surname__startswith='baldwin') | Q(surname__startswith='avery-parker'))
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #  print(connection.queries)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 # Part 3
 #################################################################
 
 #  def student_list(request):
-#  posts = Student.objects.filter(classroom=1) & Student.objects.filter(
+#  students = Student.objects.filter(classroom=1) & Student.objects.filter(
 #  age=20)
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 #  def student_list(request):
-#  posts = Student.objects.filter(
+#  students = Student.objects.filter(
 #  Q(surname__startswith='baldwin') & Q(firstname__startswith='lakisha'))
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 # Perform an UNION query
 #################################################################
@@ -55,57 +55,77 @@ from django.db.models import Q
 #  # union removes any 'duplicated' rows
 #  # union can only be used on the columns with same name
 #  # in this case: 'firstname'
-#  #  posts = Student.objects.all().values_list('firstname').union(
+#  #  students = Student.objects.all().values_list('firstname').union(
 #  #  Teacher.objects.all().values_list('firstname'))
 #
 #  #  .values_list() returns a Queryset with an array of objects
 #  #  .values() returns a Queryset with dictionary
-#  posts = Student.objects.all().values('firstname').union(
+#  students = Student.objects.all().values('firstname').union(
 #  Teacher.objects.all().values('firstname'))
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 # Perform a NOT query
 #################################################################
 
 #  def student_list(request):
-#  #  posts = Student.objects.exclude(age=20) & Student.objects.exclude(
+#  #  students = Student.objects.exclude(age=20) & Student.objects.exclude(
 #  #  firstname__startswith='raquel')
 #
-#  posts = Student.objects.exclude(age__gt=20)
+#  students = Student.objects.exclude(age__gt=20)
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #  print(connection.queries)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 #  def student_list(request):
-#  #  posts = Student.objects.exclude(age=20) & Student.objects.exclude(
+#  #  students = Student.objects.exclude(age=20) & Student.objects.exclude(
 #  #  firstname__startswith='raquel')
 #
 #  #  '~Q' means NOT
-#  posts = Student.objects.filter(
+#  students = Student.objects.filter(
 #  ~Q(age__gt=20) & ~Q(surname__startswith='baldwin'))
 #
-#  print(posts)
-#  print(posts.query)
+#  print(students)
+#  print(students.query)
 #  print(connection.queries)
 #
-#  return render(request, 'output.html', {'posts': posts})
+#  return render(request, 'output.html', {'students': students})
 
 #######################
 # SELECT and OUTPUT individual fields
 # only()
 #######################
+#  def student_list(request):
+#  students = Student.objects.filter(classroom=1).only('firstname', 'age')
+#
+#  print(students)
+#  print(students.query)
+#  print(connection.queries)
+#
+#  return render(request, 'output.html', {'students': students})
+
+#######################
+# using raw queries
+# raw()
+#######################
 def student_list(request):
-    posts = Student.objects.filter(classroom=1).only('firstname', 'age')
+    #  students = Student.objects.all()
+    # using raw queries
+    #  query = 'SELECT * FROM student_student WHERE age=20'
+    query = 'SELECT * FROM student_student'
+    # limiting to 2 items
+    students = Student.objects.raw(query)[:2]
 
-    print(posts)
-    print(posts.query)
-    print(connection.queries)
+    #  print(students)
+    for s in students:
+        print(s)
+    print(students.query)
+    #  print(connection.queries)
 
-    return render(request, 'output.html', {'posts': posts})
+    return render(request, 'output.html', {'students': students})
