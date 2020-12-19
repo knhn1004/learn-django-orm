@@ -10,6 +10,8 @@ ALLOWED_HOSTS	core/settings.py	/^ALLOWED_HOSTS = []$/;"	v
 AUTH_PASSWORD_VALIDATORS	core/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
 BASE_DIR	core/settings.py	/^BASE_DIR = Path(__file__).resolve().parent.parent$/;"	v
 BaseItem	orm/models.py	/^class BaseItem(models.Model):$/;"	c
+BookContent	orm/models.py	/^class BookContent(models.Model):$/;"	c
+BookOrders	orm/models.py	/^class BookOrders(BookContent):$/;"	c
 Books	orm/models.py	/^class Books(models.Model):$/;"	c
 DATABASES	core/settings.py	/^DATABASES = {$/;"	v
 DEBUG	core/settings.py	/^DEBUG = True$/;"	v
@@ -24,9 +26,11 @@ LANGUAGE_CODE	core/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
 MIDDLEWARE	core/settings.py	/^MIDDLEWARE = [$/;"	v
 Meta	orm/models.py	/^    class Meta(BaseItem.Meta):$/;"	c	class:ItemA
 Meta	orm/models.py	/^    class Meta:$/;"	c	class:BaseItem
+Meta	orm/models.py	/^    class Meta:$/;"	c	class:BookOrders
 Migration	orm/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
 Migration	orm/migrations/0002_books_isbn.py	/^class Migration(migrations.Migration):$/;"	c
 Migration	student/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+NewManager	orm/models.py	/^class NewManager(models.Manager):$/;"	c
 OrmConfig	orm/apps.py	/^class OrmConfig(AppConfig):$/;"	c
 Output	student/templates/output.html	/^  <h1>Output<\/h1>$/;"	h
 ROOT_URLCONF	core/settings.py	/^ROOT_URLCONF = 'core.urls'$/;"	v
@@ -52,7 +56,9 @@ books_ptr	orm/models.py	/^    books_ptr = models.OneToOneField($/;"	v	class:ISBN
 classroom	student/models.py	/^    classroom = models.IntegerField()$/;"	v	class:Student
 content	orm/models.py	/^    content = models.TextField()$/;"	v	class:ItemA
 created	orm/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:BaseItem
+created	orm/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:BookContent
 created	orm/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:Books
+created_on	orm/models.py	/^    def created_on(self):$/;"	m	class:BookOrders
 dependencies	orm/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
 dependencies	orm/migrations/0002_books_isbn.py	/^    dependencies = [$/;"	v	class:Migration
 dependencies	student/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
@@ -66,11 +72,14 @@ initial	student/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migr
 main	manage.py	/^def main():$/;"	f
 name	orm/apps.py	/^    name = 'orm'$/;"	v	class:OrmConfig
 name	student/apps.py	/^    name = 'student'$/;"	v	class:StudentsConfig
+objects	orm/models.py	/^    objects = NewManager()$/;"	v	class:BookOrders
 operations	orm/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
 operations	orm/migrations/0002_books_isbn.py	/^    operations = [$/;"	v	class:Migration
 operations	student/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
 ordering	orm/models.py	/^        ordering = ['-created']$/;"	v	class:ItemA.Meta
+ordering	orm/models.py	/^        ordering = ['created']$/;"	v	class:BookOrders.Meta
 ordering	orm/models.py	/^        ordering = ['title']$/;"	v	class:BaseItem.Meta
+proxy	orm/models.py	/^        proxy = True$/;"	v	class:BookOrders.Meta
 python.linting.enabled	.vim/coc-settings.json	/^  "python.linting.enabled": true$/;"	b
 python.linting.pep8Enabled	.vim/coc-settings.json	/^  "python.linting.pep8Enabled": true,$/;"	b
 python.linting.pylintEnabled	.vim/coc-settings.json	/^  "python.linting.pylintEnabled": false,$/;"	b
@@ -79,6 +88,7 @@ student_list	student/views.py	/^def student_list(request):$/;"	f
 surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v	class:Student
 surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v	class:Teacher
 teacher	student/models.py	/^    teacher = models.CharField(max_length=100)$/;"	v	class:Student
+title	orm/models.py	/^    title = models.CharField(max_length=100)$/;"	v	class:BookContent
 title	orm/models.py	/^    title = models.CharField(max_length=100)$/;"	v	class:Books
 title	orm/models.py	/^    title = models.CharField(max_length=255)$/;"	v	class:BaseItem
 updated	orm/models.py	/^    updated = models.DateTimeField(auto_now=True)$/;"	v	class:BaseItem

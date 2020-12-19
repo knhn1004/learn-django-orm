@@ -1,5 +1,6 @@
 # abstract models and model inheritance
 from django.db import models
+from django.utils import timezone
 
 
 class Books(models.Model):
@@ -46,3 +47,28 @@ class ItemC(BaseItem):
 
 class ItemD(BaseItem):
     slug = models.SlugField(max_length=255, unique=True)
+
+
+class BookContent(models.Model):
+    title = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+#  proxy model
+class NewManager(models.Manager):
+    pass
+
+
+class BookOrders(BookContent):
+    objects = NewManager()
+
+    class Meta:
+        #  proxy model
+        #  to add extra functionality
+        # proxy models did not get created in SQL
+        proxy = True
+        ordering = ['created']
+
+    # only for using extra functions
+    def created_on(self):
+        return timezone.now() - self.created
