@@ -1,9 +1,18 @@
-{{posts}}
+{# {{posts}} #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Django ORM</title>
+</head>
+<body>
+  <h1>Output</h1>
+  <ul>
+  {% for i in posts %}
+      <li>{{ i.firstname }} {{ i.surname }}</li>
+  {% endfor %}
+  </ul>
+</body>
+</html>
 
 
-
-
-<!-- Part 5 -->
-<!-- {% for i in x %}
-    <div>{{ i.firstname }} {{ i.surname }}</div>
-{% endfor %} -->

@@ -15,6 +15,7 @@ INSTALLED_APPS	core/settings.py	/^INSTALLED_APPS = [$/;"	v
 LANGUAGE_CODE	core/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
 MIDDLEWARE	core/settings.py	/^MIDDLEWARE = [$/;"	v
 Migration	student/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Output	student/templates/output.html	/^  <h1>Output<\/h1>$/;"	h
 ROOT_URLCONF	core/settings.py	/^ROOT_URLCONF = 'core.urls'$/;"	v
 SECRET_KEY	core/settings.py	/^SECRET_KEY = 'i+)6unlqroe2w)1w1@xhvt*^$@3!bx_qpn&)sbnyd7f5iy8#9u'$/;"	v
 STATIC_URL	core/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
