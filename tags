@@ -36,6 +36,7 @@ application	core/asgi.py	/^application = get_asgi_application()$/;"	v
 application	core/wsgi.py	/^application = get_wsgi_application()$/;"	v
 classroom	student/models.py	/^    classroom = models.IntegerField()$/;"	v	class:Student
 dependencies	student/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dictfetchall	student/views.py	/^def dictfetchall(cursor):$/;"	f
 firstname	student/models.py	/^    firstname = models.CharField(max_length=100)$/;"	v	class:Student
 firstname	student/models.py	/^    firstname = models.CharField(max_length=100)$/;"	v	class:Teacher
 initial	student/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
@@ -51,3 +52,4 @@ surname	student/models.py	/^    surname = models.CharField(max_length=100)$/;"	v
 teacher	student/models.py	/^    teacher = models.CharField(max_length=100)$/;"	v	class:Student
 urlpatterns	core/urls.py	/^urlpatterns = [$/;"	v
 urlpatterns	student/urls.py	/^urlpatterns = [$/;"	v
+{{ students }}	student/templates/output.html	/^  <h2>{{ students }}<\/h2>$/;"	i

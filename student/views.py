@@ -3,10 +3,6 @@ from .models import Student, Teacher
 from django.db import connection
 from django.db.models import Q
 
-# Part 2
-#################################################################
-
-
 #  def student_list(request):
 #  students = Student.objects.all()
 #
@@ -58,7 +54,7 @@ from django.db.models import Q
 #  #  students = Student.objects.all().values_list('firstname').union(
 #  #  Teacher.objects.all().values_list('firstname'))
 #
-#  #  .values_list() returns a Queryset with an array of objects
+#  #  .values_list() returns a Queryset with an array of dictionary
 #  #  .values() returns a Queryset with dictionary
 #  students = Student.objects.all().values('firstname').union(
 #  Teacher.objects.all().values('firstname'))
@@ -114,18 +110,47 @@ from django.db.models import Q
 # using raw queries
 # raw()
 #######################
+#  def student_list(request):
+#  #  students = Student.objects.all()
+#  # using raw queries
+#  #  query = 'SELECT * FROM student_student WHERE age=20'
+#  query = 'SELECT * FROM student_student'
+#  # limiting to 2 items
+#  students = Student.objects.raw(query)[:2]
+#
+#  #  print(students)
+#  for s in students:
+#  print(s)
+#  print(students.query)
+#  #  print(connection.queries)
+#
+#  return render(request, 'output.html', {'students': students})
+
+#######################
+# performing raw SQL queries with connection
+# bypassing the ORM
+# connection.cursor()
+#######################
+
+
+def dictfetchall(cursor):
+    desc = cursor.description
+    return [
+        dict(zip([col[0] for col in desc], row))
+        for row in cursor.fetchall()
+    ]
+
+
 def student_list(request):
-    #  students = Student.objects.all()
-    # using raw queries
-    #  query = 'SELECT * FROM student_student WHERE age=20'
-    query = 'SELECT * FROM student_student'
-    # limiting to 2 items
-    students = Student.objects.raw(query)[:2]
+    cursor = connection.cursor()
+    #  cursor.execute('SELECT count(*) FROM student_student')
+    cursor.execute('SELECT * FROM student_student WHERE age > 20')
 
-    #  print(students)
-    for s in students:
-        print(s)
-    print(students.query)
-    #  print(connection.queries)
+    #  r = cursor.fetchone()
+    #  r = cursor.fetchall()
+    r = dictfetchall(cursor)
+    print(r)
 
-    return render(request, 'output.html', {'students': students})
+    print(connection.queries)
+
+    return render(request, 'output.html', {'students': r})
