@@ -62,13 +62,14 @@ class NewManager(models.Manager):
 class BookOrders(BookContent):
     objects = NewManager()
 
+    # only for using extra functions
+
+    def created_on(self):
+        return timezone.now() - self.created
+
     class Meta:
         #  proxy model
         #  to add extra functionality
         # proxy models did not get created in SQL
         proxy = True
         ordering = ['created']
-
-    # only for using extra functions
-    def created_on(self):
-        return timezone.now() - self.created
